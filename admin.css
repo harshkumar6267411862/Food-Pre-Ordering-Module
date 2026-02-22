@@ -1,0 +1,70 @@
+body {
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cards */
+.card {
+    border-radius: 12px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Dashboard Cards */
+.dashboard-card h1 {
+    font-weight: 600;
+}
+
+/* Tables */
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table th {
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Table Row Hover */
+.table-hover tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+/* Badges */
+.badge {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* Small Buttons */
+.btn-sm {
+    min-width: 95px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* Large Buttons */
+.btn-lg {
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}

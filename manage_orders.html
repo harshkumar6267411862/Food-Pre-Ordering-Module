@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Orders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark px-4">
+    <span class="navbar-brand">Manage Orders</span>
+
+    <div>
+        <a href="{{ url_for('home') }}" class="btn btn-light btn-sm me-2">
+            Back to Home
+        </a>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sm">
+            Logout
+        </a>
+    </div>
+</nav>
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg p-4">
+        <h3 class="mb-4 text-center">All Orders</h3>
+
+        <table class="table table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Student</th>
+                    <th>Food</th>
+                    <th>Slot</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.student.name }}</td>
+                    <td>{{ order.food.name }}</td>
+                    <td>{{ order.slot.slot_time }}</td>
+                    <td>{{ order.quantity }}</td>
+
+                    <td>
+                        {% if order.status == "Pending" %}
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        {% elif order.status == "Preparing" %}
+                            <span class="badge bg-info">Preparing</span>
+                        {% elif order.status == "Ready" %}
+                            <span class="badge bg-success">Ready</span>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if order.status != "Received" %}
+                    
+                            <a href="{{ url_for('update_order_status', order_id=order.id, new_status='Preparing') }}"
+                               class="btn btn-warning btn-sm mb-1">Preparing</a>
+                    
+                            <a href="{{ url_for('update_order_status', order_id=order.id, new_status='Ready') }}"
+                               class="btn btn-success btn-sm mb-1">Ready</a>
+                    
+                            <a href="{{ url_for('update_order_status', order_id=order.id, new_status='Received') }}"
+                               class="btn btn-dark btn-sm">Received</a>
+                    
+                        {% else %}
+                            <span class="text-success fw-bold">Completed</span>
+                        {% endif %}
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
